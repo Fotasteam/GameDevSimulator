@@ -21,13 +21,20 @@ foreach (char character in input)
     if (character == ',') ++ammountOfCommas;
 }
 
+int i = 0;
 for (int j = 0; j < ammountOfCommas; ++j)
 {
-    int i = 0;
     string currentSequence = "";
     while (input[i] != ',')
     {
-        currentSequence += i;
+        currentSequence += input[i];
         ++i;
     }
+    ++i;
+    sequencesOfInput.Add(currentSequence);
+}
+
+foreach (string seq in sequencesOfInput)
+{
+    Console.WriteLine(seq);
 }
