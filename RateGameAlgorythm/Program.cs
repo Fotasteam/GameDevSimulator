@@ -1,10 +1,7 @@
-﻿Console.WriteLine("Input data to generate a game review.");
-
-string input = Console.ReadLine();
-int ammountOfCommas = 0;
+﻿using System.Net;
 
 string genre1, genre2;
-string platform;
+string platform1; string platform2; string platform3;
 int devTime;
 string budget, publisher;
 string topic1, topic2, topic3;
@@ -13,42 +10,47 @@ int ageRating, dimention;
 List<int> resourceAllocation = new List<int>();
 bool monetization; int multiplayer;
 
-//List<string> sequencesOfInput = new List<string>();
+var client = new WebClient();
 
-//foreach (char character in input)
-//{
-//    if (character == ',') ++ammountOfCommas;
-//}
+string downloadedScores = client.DownloadString("https://raw.githubusercontent.com/Fotasteam/GameDevSimulator/master/Data/scores.txt");
 
-//int j = 0;
-//for (int i = 0; i < ammountOfCommas; ++i)
-//{
-//    string currentSequence = "";
-//    while (input[j] != ',')
-//    {
-//        currentSequence += input[j];
-//        ++j;
-//    }
-//    ++j;
-//    sequencesOfInput.Add(currentSequence);
-//}
+List<string> rows = new List<string>();
 
-//for (int i = 0; i < sequencesOfInput.Count; ++i)
-//{
-//    Console.WriteLine(sequencesOfInput[i]);
+var sr = new StringReader(downloadedScores);
+string line = null;
+while (true)
+{
+    line = sr.ReadLine();
+    if (line != null)
+    {
+        if (!line.Contains(',') && !line.Contains('.'))
+            rows.Add(line);
+    }
+    else
+        break;
+}
 
-//    switch (i)
-//    {
-//        case 0:
-            
-//            break;
+int topicGenreScore = 0;
+int genrePlatformScore = 0;
+int budgetGenreScore = 0;
+int dimentionGenreScore = 0;
+int questGenreScore = 0;
+int gameplayGenreScore = 0;
+int engineGenreScore = 0;
+int aiGenreScore = 0;
+int dialogueGenreScore = 0;
+int levelDesignGenreScore = 0;
+int worldDesignGenreScore = 0;
+int graphicsGenreScore = 0;
+int soundGenreScore = 0;
+int monetizationGenreScore = 0;
+int monetizationPlatformScore = 0;
+int multiplayerGenreScore = 0;
 
-//        case 1:
-//            break;
+foreach (var row in rows)
+{
+    if (row.Contains(topic1))
+    {
 
-//        default:
-//            Console.WriteLine("Something went wrong...");
-//            break;
-//    }
-//}
-
+    }
+}
