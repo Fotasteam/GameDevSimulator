@@ -76,15 +76,22 @@ foreach (var row in rows)
 
 int returnRequestedScore(int column, string line)
 {
+    List<string> seperatedInformation = new List<string>();
+    string sequence = "";
     for (int i = 0; i < line.Length; ++i)
     {
         if (line[i] != ' ')
         {
-
+            sequence += line[i];
+        }
+        else
+        {
+            seperatedInformation.Add(sequence);
+            sequence = "";
         }
     }
 
-    return 0;
+    return int.Parse(seperatedInformation[column]);
 }
 
 int determineGenreColumn(string item)
