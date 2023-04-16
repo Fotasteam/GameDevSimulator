@@ -2,11 +2,11 @@
 
 string genre1 = "Simulation", genre2 = "Strategy";
 string platform1 = "PC"; string platform2 = "XBlock"; string platform3 = "PayStation";
-int devTime;
-string budget, publisher;
+int devTime = 24;
+string budget = "Small", publisher;
 string topic1, topic2, topic3;
 string marketing;
-int ageRating, dimention;
+int ageRating = 9, dimention;
 List<int> resourceAllocation = new List<int>();
 bool monetization; int multiplayer;
 
@@ -33,8 +33,12 @@ while (true)
 int topic1GenreScore = 0;
 int topic2GenreScore = 0;
 int topic3GenreScore = 0;
-int genrePlatformScore = 0;
+int genrePlatform1Score = 0;
+int genrePlatform2Score = 0;
+int genrePlatform3Score = 0;
+int devTimeScore = 0;
 int budgetGenreScore = 0;
+int ageRatingScore = 0;
 int dimentionGenreScore = 0;
 int questGenreScore = 0;
 int gameplayGenreScore = 0;
@@ -66,11 +70,51 @@ foreach (var row in rows)
     }
     else if(row.Contains(topic2))
     {
-
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        topic2GenreScore = points;
     }
     else if (row.Contains(topic3))
     {
-
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        topic3GenreScore = points;
+    }
+    else if (row.Contains(platform1))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        genrePlatform1Score = points;
+    }
+    else if (row.Contains(platform1))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        genrePlatform2Score = points;
+    }
+    else if (row.Contains(platform3))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        genrePlatform3Score = points;
+    }
+    else if (row.Contains(devTime.ToString()))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        devTimeScore = points;
+    }
+    else if (row.Contains(budget))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        budgetGenreScore = points;
+    }
+    else if (row.Contains(ageRating.ToString()))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        ageRatingScore = points;
     }
 }
 
