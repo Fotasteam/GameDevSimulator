@@ -4,11 +4,12 @@ string genre1 = "Simulation", genre2 = "Strategy";
 string platform1 = "PC"; string platform2 = "XBlock"; string platform3 = "PayStation";
 int devTime = 24;
 string budget = "Small", publisher;
-string topic1, topic2, topic3;
+string topic1 = "Airplane", topic2 = "Transport", topic3 = "City";
 string marketing;
-int ageRating = 9, dimention;
-List<int> resourceAllocation = new List<int>();
-bool monetization; int multiplayer;
+int ageRating = 9;
+string dimention = "3D";
+List<int> resourceAllocation = new List<int>() { 1, 4, 15, 19, 1, 10, 30, 15, 5 };
+string monetization = "Paid"; string multiplayer = "Both";
 
 var client = new WebClient();
 
@@ -53,6 +54,40 @@ int monetizationGenreScore = 0;
 int monetizationPlatformScore = 0;
 int multiplayerGenreScore = 0;
 
+for (int i = 100; i < 109; i++)
+{
+    switch (i)
+    {
+        case 100:
+            questGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 101:
+            gameplayGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 102:
+            engineGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 103:
+            aiGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 104:
+            dialogueGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 105:
+            levelDesignGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 106:
+            worldDesignGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 107:
+            graphicsGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+        case 108:
+            soundGenreScore = (returnRequestedScore(determineGenreColumn(genre1), rows[i]) + returnRequestedScore(determineGenreColumn(genre2), rows[i])) / 2;
+            break;
+    }
+}
+
 foreach (var row in rows)
 {
     int genreColumn1 = determineGenreColumn(genre1);
@@ -66,37 +101,37 @@ foreach (var row in rows)
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        topic1GenreScore = points;
+        topic1GenreScore = points * 3;
     }
-    else if(row.Contains(topic2))
+    else if (row.Contains(topic2))
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        topic2GenreScore = points;
+        topic2GenreScore = points * 3;
     }
     else if (row.Contains(topic3))
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        topic3GenreScore = points;
+        topic3GenreScore = points * 3;
     }
     else if (row.Contains(platform1))
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        genrePlatform1Score = points;
+        genrePlatform1Score = points * 2;
     }
-    else if (row.Contains(platform1))
+    else if (row.Contains(platform2))
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        genrePlatform2Score = points;
+        genrePlatform2Score = points * 2;
     }
     else if (row.Contains(platform3))
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        genrePlatform3Score = points;
+        genrePlatform3Score = points * 2;
     }
     else if (row.Contains(devTime.ToString()))
     {
@@ -114,7 +149,32 @@ foreach (var row in rows)
     {
         points += returnRequestedScore(genreColumn1, row);
         points += returnRequestedScore(genreColumn2, row);
-        ageRatingScore = points;
+        ageRatingScore = points * 2;
+    }
+    else if (row.Contains(dimention))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        dimentionGenreScore = points * 2;
+    }
+    else if (row.Contains(monetization + "P"))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        monetizationGenreScore = points;
+    }
+    else if (row.Contains(monetization + "G"))
+    {
+        points += returnRequestedScore(platformColumn1, row);
+        points += returnRequestedScore(platformColumn2, row);
+        points += returnRequestedScore(platformColumn3, row);
+        monetizationPlatformScore = points;
+    }
+    else if (row.Contains(multiplayer))
+    {
+        points += returnRequestedScore(genreColumn1, row);
+        points += returnRequestedScore(genreColumn2, row);
+        multiplayerGenreScore = points;
     }
 }
 
