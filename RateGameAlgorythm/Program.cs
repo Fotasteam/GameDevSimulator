@@ -178,6 +178,8 @@ foreach (var row in rows)
     }
 }
 
+int score = topic1GenreScore + topic2GenreScore + topic3GenreScore + genrePlatform1Score + genrePlatform2Score + genrePlatform3Score;
+
 int returnRequestedScore(int column, string line)
 {
     List<string> seperatedInformation = new List<string>();
