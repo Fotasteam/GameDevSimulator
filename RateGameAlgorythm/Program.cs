@@ -178,7 +178,19 @@ foreach (var row in rows)
     }
 }
 
-int score = topic1GenreScore + topic2GenreScore + topic3GenreScore + genrePlatform1Score + genrePlatform2Score + genrePlatform3Score;
+//46 linijek w pliku?
+
+int gameScore = topic1GenreScore + topic2GenreScore + topic3GenreScore 
+    + genrePlatform1Score + genrePlatform2Score + genrePlatform3Score
+    + devTimeScore + budgetGenreScore + ageRatingScore + dimentionGenreScore
+    + questGenreScore + gameplayGenreScore + engineGenreScore + aiGenreScore 
+    + dialogueGenreScore + levelDesignGenreScore + worldDesignGenreScore 
+    + graphicsGenreScore + soundGenreScore + monetizationGenreScore
+    + monetizationPlatformScore + multiplayerGenreScore;
+
+//random zaokraglanie czy cos w tym stylu
+
+int maxScore = 86; // dodaj do tego komponenty pozniej
 
 int returnRequestedScore(int column, string line)
 {
