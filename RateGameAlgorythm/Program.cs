@@ -3,13 +3,14 @@
 string genre1 = "Simulation", genre2 = "Strategy";
 string platform1 = "PC"; string platform2 = "XBlock"; string platform3 = "PayStation";
 int devTime = 24;
-string budget = "Small", publisher;
+string budget = "Small", publisher = "YES";
 string topic1 = "Airplane", topic2 = "Transport", topic3 = "City";
-string marketing;
+string marketing = "Medium";
 int ageRating = 9;
 string dimention = "3D";
 List<int> resourceAllocation = new List<int>() { 1, 4, 15, 19, 1, 10, 30, 15, 5 };
 string monetization = "Paid"; string multiplayer = "Both";
+int additionalComponentsTotal = 5, additionalComponentsMaxValue = 15;
 
 var client = new WebClient();
 
@@ -186,11 +187,23 @@ int gameScore = topic1GenreScore + topic2GenreScore + topic3GenreScore
     + questGenreScore + gameplayGenreScore + engineGenreScore + aiGenreScore 
     + dialogueGenreScore + levelDesignGenreScore + worldDesignGenreScore 
     + graphicsGenreScore + soundGenreScore + monetizationGenreScore
-    + monetizationPlatformScore + multiplayerGenreScore;
+    + monetizationPlatformScore + multiplayerGenreScore + additionalComponentsTotal;
 
-//random zaokraglanie czy cos w tym stylu
+int maxScore = 86 + additionalComponentsMaxValue; // dodaj do tego komponenty pozniej
 
-int maxScore = 86; // dodaj do tego komponenty pozniej
+double betaScoreDouble = gameScore / maxScore;
+
+Random random = new Random();
+int rand = random.Next(0, 2);
+int betaScore;
+
+if (rand == 0)
+    betaScoreDouble = Math.Ceiling(betaScoreDouble);
+else
+    betaScoreDouble = Math.Floor(betaScoreDouble);
+
+betaScore = Convert.ToInt32(betaScoreDouble);
+return betaScore;
 
 int returnRequestedScore(int column, string line)
 {
