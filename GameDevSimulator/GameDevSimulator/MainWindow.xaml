@@ -10,21 +10,51 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <NavigationView Background="{ThemeResource SmokeFillColorDefaultBrush}">
-        <NavigationView.MenuItems>
-            <NavigationViewItem Content="Games" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
-                <NavigationViewItem.MenuItems>
-                    <NavigationViewItem Content="Create a new game" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
-                </NavigationViewItem.MenuItems>
-            </NavigationViewItem>
-            <NavigationViewItem Content="test" Icon="Page2" ToolTipService.ToolTip="Document options" Tag="test">
-                <NavigationViewItem.MenuItems>
-                    <NavigationViewItem Content="test1" Icon="NewFolder" ToolTipService.ToolTip="Create new" Tag="SamplePage5"/>
-                    <NavigationViewItem Content="test2" Icon="OpenLocal" ToolTipService.ToolTip="Upload file" Tag="SamplePage6"/>
-                </NavigationViewItem.MenuItems>
-            </NavigationViewItem>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        </NavigationView.MenuItems>
-        <Frame x:Name="contentFrame"/>
-    </NavigationView>
+        <NavigationView
+                    Width="Auto"
+                    Margin="0,0,0,0"
+                    IsTitleBarAutoPaddingEnabled="False"
+                    x:Name="navView"
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    IsBackButtonVisible="Collapsed">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Games" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Create a new game" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                <NavigationViewItem Content="test" Icon="Page2" ToolTipService.ToolTip="Document options" Tag="test">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="test1" Icon="NewFolder" ToolTipService.ToolTip="Create new" Tag="SamplePage5"/>
+                        <NavigationViewItem Content="test2" Icon="OpenLocal" ToolTipService.ToolTip="Upload file" Tag="SamplePage6"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame"/>
+        </NavigationView>
+
+        <Grid 
+              Height="30"
+              VerticalAlignment="Top"
+              x:Name="AppTitleBar"
+              SizeChanged="AppTitleBar_SizeChanged"
+              Background="White">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="NavigationViewer" Width="Auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<SymbolIcon Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Text="Game Dev Simulator" Margin="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />-->
+            
+        </Grid>
+
+    </Grid>
 </Window>

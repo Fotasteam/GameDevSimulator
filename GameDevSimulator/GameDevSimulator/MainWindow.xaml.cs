@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -15,6 +17,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,9 +29,62 @@ namespace GameDevSimulator
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private Microsoft.UI.Windowing.AppWindow m_AppWindow;
         public MainWindow()
         {
             this.InitializeComponent();
+            DrawCustomTitleBar();
+        }
+        private Microsoft.UI.Windowing.AppWindow GetAppWindowForCurrentWindow()
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return Microsoft.UI.Windowing.AppWindow.GetFromWindowId(wndId);
+        }
+
+        private void AppTitleBar_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            // Check to see if customization is supported.
+            // Currently only supported on Windows 11.
+            if (AppWindowTitleBar.IsCustomizationSupported()
+                && m_AppWindow.TitleBar.ExtendsContentIntoTitleBar)
+            {
+                // Update drag region if the size of the title bar changes.
+                SetDragRegionForCustomTitleBar(m_AppWindow);
+            }
+        }
+
+        private void DrawCustomTitleBar()
+        {
+            if (AppWindowTitleBar.IsCustomizationSupported())
+            {
+                m_AppWindow = GetAppWindowForCurrentWindow();
+                m_AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+
+                m_AppWindow.TitleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 33, 33, 33); //zmien kolor pozniej!
+
+                SetDragRegionForCustomTitleBar(m_AppWindow);
+            }
+        }
+
+        private void SetDragRegionForCustomTitleBar(AppWindow appWindow)
+        {
+            int navViewWidth = m_AppWindow.TitleBar.RightInset;
+            navView.Margin = new Thickness(0, 0, navViewWidth + 5, 0);
+
+            int windowMenuBarWidthAndPadding = (int)navView.ActualWidth + (int)navView.Margin.Right;
+            int dragRegionWidth = m_AppWindow.Size.Width - navViewWidth;
+
+            Windows.Graphics.RectInt32[] dragRects = Array.Empty<Windows.Graphics.RectInt32>();
+            Windows.Graphics.RectInt32 dragRect;
+
+            dragRect.X = windowMenuBarWidthAndPadding;
+            dragRect.Y = 0;
+            dragRect.Height = (int)AppTitleBar.Height;
+            dragRect.Width = dragRegionWidth;
+
+            Windows.Graphics.RectInt32[] dragRectsArray = dragRects.Append(dragRect).ToArray();
+            m_AppWindow.TitleBar.SetDragRectangles(dragRectsArray);
         }
     }
 }
