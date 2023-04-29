@@ -61,7 +61,7 @@ namespace GameDevSimulator
                 m_AppWindow = GetAppWindowForCurrentWindow();
                 m_AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
 
-                m_AppWindow.TitleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 33, 33, 33); //zmien kolor pozniej!
+                m_AppWindow.TitleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 100, 33, 33); //zmien kolor pozniej!
 
                 SetDragRegionForCustomTitleBar(m_AppWindow);
             }
@@ -69,22 +69,28 @@ namespace GameDevSimulator
 
         private void SetDragRegionForCustomTitleBar(AppWindow appWindow)
         {
-            int navViewWidth = m_AppWindow.TitleBar.RightInset;
-            navView.Margin = new Thickness(0, 0, navViewWidth + 5, 0);
+            RightPaddingColumn.Width = new GridLength(appWindow.TitleBar.RightInset);
+            LeftPaddingColumn.Width = new GridLength(appWindow.TitleBar.LeftInset);
 
-            int windowMenuBarWidthAndPadding = (int)navView.ActualWidth + (int)navView.Margin.Right;
-            int dragRegionWidth = m_AppWindow.Size.Width - navViewWidth;
+            List<Windows.Graphics.RectInt32> dragRectsList = new();
 
-            Windows.Graphics.RectInt32[] dragRects = Array.Empty<Windows.Graphics.RectInt32>();
-            Windows.Graphics.RectInt32 dragRect;
+            Windows.Graphics.RectInt32 dragRectL;
+            dragRectL.X = (int)((LeftPaddingColumn.ActualWidth));
+            dragRectL.Y = 0;
+            dragRectL.Height = (int)(AppTitleBar.ActualHeight);
+            dragRectL.Width = (int)(IconColumn.ActualWidth + TitleColumn.ActualWidth + LeftDragColumn.ActualWidth);
+            dragRectsList.Add(dragRectL);
 
-            dragRect.X = windowMenuBarWidthAndPadding;
-            dragRect.Y = 0;
-            dragRect.Height = (int)AppTitleBar.Height;
-            dragRect.Width = dragRegionWidth;
+            Windows.Graphics.RectInt32 dragRectR;
+            dragRectR.X = (int)(LeftPaddingColumn.ActualWidth + IconColumn.ActualWidth + iconTitleBar.ActualWidth + LeftDragColumn.ActualWidth + NavigationColumn.ActualWidth);
+            dragRectR.Y = 0;
+            dragRectR.Height = (int)(AppTitleBar.ActualHeight);
+            dragRectR.Width = (int)(RightDragColumn.ActualWidth);
+            dragRectsList.Add(dragRectR);
 
-            Windows.Graphics.RectInt32[] dragRectsArray = dragRects.Append(dragRect).ToArray();
-            m_AppWindow.TitleBar.SetDragRectangles(dragRectsArray);
+            Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
+
+            appWindow.TitleBar.SetDragRectangles(dragRects);
         }
     }
 }
