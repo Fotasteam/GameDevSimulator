@@ -41,16 +41,12 @@
               VerticalAlignment="Top"
               x:Name="AppTitleBar"
               SizeChanged="AppTitleBar_SizeChanged"
-              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+              Background="Transparent">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
-                <ColumnDefinition x:Name="IconColumn" Width="Auto" />
-                <ColumnDefinition x:Name="TitleColumn" Width="Auto" />
-                <ColumnDefinition x:Name="LeftDragColumn" Width="*" />
-                <ColumnDefinition x:Name="NavigationColumn" Width="Auto" />
-                <ColumnDefinition x:Name="RightDragColumn" Width="*" />
-                <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+                <ColumnDefinition x:Name="LeftDragColumn" Width="40"/>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="*"/>
             </Grid.ColumnDefinitions>
 
             <SymbolIcon x:Name="iconTitleBar" Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />

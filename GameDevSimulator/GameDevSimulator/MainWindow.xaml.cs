@@ -74,18 +74,11 @@ namespace GameDevSimulator
 
             List<Windows.Graphics.RectInt32> dragRectsList = new();
 
-            Windows.Graphics.RectInt32 dragRectL;
-            dragRectL.X = (int)((LeftPaddingColumn.ActualWidth));
-            dragRectL.Y = 0;
-            dragRectL.Height = (int)(AppTitleBar.ActualHeight);
-            dragRectL.Width = (int)(IconColumn.ActualWidth + TitleColumn.ActualWidth + LeftDragColumn.ActualWidth);
-            dragRectsList.Add(dragRectL);
-
             Windows.Graphics.RectInt32 dragRectR;
-            dragRectR.X = (int)(LeftPaddingColumn.ActualWidth + IconColumn.ActualWidth + iconTitleBar.ActualWidth + LeftDragColumn.ActualWidth + NavigationColumn.ActualWidth);
+            dragRectR.X = (int)(40);
             dragRectR.Y = 0;
             dragRectR.Height = (int)(AppTitleBar.ActualHeight);
-            dragRectR.Width = (int)(RightDragColumn.ActualWidth);
+            dragRectR.Width = (int)(AppTitleBar.ActualWidth);
             dragRectsList.Add(dragRectR);
 
             Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
