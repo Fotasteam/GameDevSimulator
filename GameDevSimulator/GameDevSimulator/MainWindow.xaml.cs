@@ -69,21 +69,21 @@ namespace GameDevSimulator
 
         private void SetDragRegionForCustomTitleBar(AppWindow appWindow)
         {
-            RightPaddingColumn.Width = new GridLength(appWindow.TitleBar.RightInset);
-            LeftPaddingColumn.Width = new GridLength(appWindow.TitleBar.LeftInset);
+            int navViewWidth = m_AppWindow.TitleBar.RightInset;
 
-            List<Windows.Graphics.RectInt32> dragRectsList = new();
+            int windowNavigationViewWidthAndPadding = (int)navView.ActualWidth + (int)navView.Margin.Right;
+            int dragRegionWidth = m_AppWindow.Size.Width - navViewWidth;
 
-            Windows.Graphics.RectInt32 dragRectR;
-            dragRectR.X = (int)(40);
-            dragRectR.Y = 0;
-            dragRectR.Height = (int)(AppTitleBar.ActualHeight);
-            dragRectR.Width = (int)(AppTitleBar.ActualWidth);
-            dragRectsList.Add(dragRectR);
+            Windows.Graphics.RectInt32[] dragRects = Array.Empty<Windows.Graphics.RectInt32>();
+            Windows.Graphics.RectInt32 dragRect;
 
-            Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
+            dragRect.X = /*windowNavigationViewWidthAndPadding*/ 0;
+            dragRect.Y = 0;
+            dragRect.Height = (int)AppTitleBar.Height;
+            dragRect.Width = dragRegionWidth;
 
-            appWindow.TitleBar.SetDragRectangles(dragRects);
+            Windows.Graphics.RectInt32[] dragRectsArray = dragRects.Append(dragRect).ToArray();
+            m_AppWindow.TitleBar.SetDragRectangles(dragRectsArray);
         }
     }
 }

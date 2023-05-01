@@ -13,12 +13,14 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <NavigationView
-                    Width="Auto"
-                    Margin="0,0,0,0"
+                    Margin="0,40,0,0"
+                    HorizontalAlignment="Left"
                     IsTitleBarAutoPaddingEnabled="False"
                     x:Name="navView"
                     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                    IsBackButtonVisible="Collapsed">
+                    IsBackButtonVisible="Collapsed"
+                    IsPaneToggleButtonVisible="False"
+                    IsPaneOpen="True">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Games" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                     <NavigationViewItem.MenuItems>
@@ -44,13 +46,14 @@
               Background="Transparent">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="LeftDragColumn" Width="40"/>
-                <ColumnDefinition x:Name="LeftPaddingColumn" Width="*"/>
-                <ColumnDefinition x:Name="RightPaddingColumn" Width="*"/>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="NavigationView" Width="Auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
 
-            <SymbolIcon x:Name="iconTitleBar" Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
-            <TextBlock Text="Game Dev Simulator" Margin="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
+            <!--<SymbolIcon x:Name="iconTitleBar" Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Text="Game Dev Simulator" Margin="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />-->
             
         </Grid>
 
