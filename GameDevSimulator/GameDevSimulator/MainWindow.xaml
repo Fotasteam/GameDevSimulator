@@ -12,6 +12,24 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <Grid 
+              Height="40"
+              VerticalAlignment="Top"
+              x:Name="AppTitleBar"
+              SizeChanged="AppTitleBar_SizeChanged"
+              Background="Black">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="NavigationView" Width="Auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <SymbolIcon Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
+            <TextBlock Text="Game Dev Simulator" Margin="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
+        </Grid>
+
         <NavigationView
                     Margin="0,40,0,0"
                     HorizontalAlignment="Left"
@@ -19,8 +37,9 @@
                     x:Name="navView"
                     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                     IsBackButtonVisible="Collapsed"
+                    PaneDisplayMode="Left"
                     IsPaneToggleButtonVisible="False"
-                    IsPaneOpen="True">
+                    BorderThickness="0">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Games" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                     <NavigationViewItem.MenuItems>
@@ -37,25 +56,6 @@
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame"/>
         </NavigationView>
-
-        <Grid 
-              Height="40"
-              VerticalAlignment="Top"
-              x:Name="AppTitleBar"
-              SizeChanged="AppTitleBar_SizeChanged"
-              Background="Transparent">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
-                <ColumnDefinition x:Name="NavigationView" Width="Auto"/>
-                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
-                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
-            </Grid.ColumnDefinitions>
-
-            <!--<SymbolIcon x:Name="iconTitleBar" Symbol="Play" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />
-            <TextBlock Text="Game Dev Simulator" Margin="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" />-->
-            
-        </Grid>
 
     </Grid>
 </Window>
