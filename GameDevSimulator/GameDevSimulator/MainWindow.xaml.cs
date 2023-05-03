@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using GameDevSimulator.Views;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -84,6 +85,22 @@ namespace GameDevSimulator
 
             Windows.Graphics.RectInt32[] dragRectsArray = dragRects.Append(dragRect).ToArray();
             m_AppWindow.TitleBar.SetDragRectangles(dragRectsArray);
+        }
+
+        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                contentFrame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                var selectedItem = args.SelectedItem as NavigationViewItem;
+                string selectedItemTag = ((string)selectedItem.Tag);
+                string pageName = "GameDevSimulator.Views." + selectedItemTag;
+                Type pageType = Type.GetType(pageName);
+                contentFrame.Navigate(pageType);
+            }
         }
     }
 }
