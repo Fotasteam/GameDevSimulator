@@ -53,6 +53,9 @@ namespace GameDevSimulator
                 // Update drag region if the size of the title bar changes.
                 SetDragRegionForCustomTitleBar(m_AppWindow);
             }
+
+            contentFrame.Width = m_AppWindow.Size.Width - navView.Width;
+            contentFrame.Height = m_AppWindow.Size.Height - 40;
         }
 
         private void DrawCustomTitleBar()
