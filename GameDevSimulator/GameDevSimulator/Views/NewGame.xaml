@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="GameDevSimulator.Views.NewGame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GameDevSimulator.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button VerticalAlignment="Top" Margin="30,30,0,0" Click="Button_Click" > test algorytmu </Button>
+        
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,50,0,0" x:Name="textBox_genre1"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,100,0,0" x:Name="textBox_genre2"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,150,0,0" x:Name="textBox_platform1"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,200,0,0" x:Name="textBox_platform2"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,250,0,0" x:Name="textBox_platform3"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,300,0,0" x:Name="textBox_budget"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,350,0,0" x:Name="textBox_publisher"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,400,0,0" x:Name="textBox_topic1"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,450,0,0" x:Name="textBox_topic2"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,500,0,0" x:Name="textBox_topic3"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,550,0,0" x:Name="textBox_marketing"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,600,0,0" x:Name="textBox_ageRating"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,650,0,0" x:Name="textBox_dimention"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,700,0,0" x:Name="textBox_monetization"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,750,0,0" x:Name="textBox_multiplayer"/>
+        <TextBox VerticalAlignment="Top" Width="200" Height="50" Margin="30,800,0,0" x:Name="textBox_resourceAllocation"/>
+
+        <TextBlock x:Name="score" VerticalAlignment="Top" HorizontalAlignment="Left" Text="test" />
+    </Grid>
+</Page>

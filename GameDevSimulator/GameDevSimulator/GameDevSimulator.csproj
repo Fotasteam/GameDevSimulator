@@ -11,6 +11,7 @@
 	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\NewGame.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
   </ItemGroup>
 
@@ -24,5 +25,13 @@
     <Page Update="Views\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="Views\NewGame.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Views\NewGame.xaml" />
   </ItemGroup>
 </Project>

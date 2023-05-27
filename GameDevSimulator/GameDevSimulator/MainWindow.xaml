@@ -43,7 +43,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Games" Icon="Contact" ToolTipService.ToolTip="Account" Tag="SamplePage2">
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Content="Create a new game" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="SamplePage3"/>
+                        <NavigationViewItem Content="Create a new game" Icon="Mail" ToolTipService.ToolTip="Mail" Tag="NewGame"/>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
                 <NavigationViewItem Content="test" Icon="Page2" ToolTipService.ToolTip="Document options" Tag="test">
